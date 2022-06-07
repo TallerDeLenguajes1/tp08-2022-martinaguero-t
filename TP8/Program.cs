@@ -51,18 +51,19 @@ class Program{
             if(archivos.Any() || subcarpetas.Any()){
 
                 var separarRuta = path.Split("\\");
-
                 Console.WriteLine("Mostrando el contenido de la carpeta " + separarRuta[separarRuta.Length-1]);
+                // Se indica al usuario en qué directorio está
 
                 short i = 1;
+                // Indice para indicar el número de archivo o carpeta en una carpeta determinada. Se "reinicia" en cada llamada recursiva.
 
                 foreach (string rutaArchivo in archivos)
                 {   
-                    var separarRuta1 = rutaArchivo.Split("\\");
+                    separarRuta = rutaArchivo.Split("\\");
 
-                    Console.WriteLine("File -> " + separarRuta1[separarRuta1.Length-1]);
+                    Console.WriteLine("File -> " + separarRuta[separarRuta.Length-1]);
 
-                    var nombreYExtension = separarRuta1[separarRuta1.Length-1].Split(".");
+                    var nombreYExtension = separarRuta[separarRuta.Length-1].Split(".");
 
                     sr.WriteLine(i +";"+ nombreYExtension[0] +";"+ nombreYExtension[1]);
 
@@ -71,14 +72,14 @@ class Program{
 
                 foreach (string rutaSubcarpeta in subcarpetas)
                 {   
-                    var separarRuta2 = rutaSubcarpeta.Split("\\");
+                    separarRuta = rutaSubcarpeta.Split("\\");
 
-                    Console.WriteLine("Folder -> " + separarRuta2[separarRuta2.Length-1]);
+                    Console.WriteLine("Folder -> " + separarRuta[separarRuta.Length-1]);
 
-                    sr.WriteLine(i +";"+ separarRuta2[separarRuta2.Length-1]+";"+"ES CARPETA");
-
-                    i++;
+                    sr.WriteLine(i +";"+ separarRuta[separarRuta.Length-1]+";"+"ES CARPETA");
+                    // Si es carpeta, no se guarda una extensión
                     
+                    i++;
                 }
 
                 foreach (string rutaSubcarpeta in subcarpetas){

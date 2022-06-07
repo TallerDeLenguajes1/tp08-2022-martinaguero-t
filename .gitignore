@@ -424,7 +424,7 @@ obj/
 
 # Support for Project snippet scope
 .vscode/*.code-snippets
-
+.csv
 # Ignore code-workspaces
 
 # End of https://www.toptal.com/developers/gitignore/api/dotnetcore,visualstudiocode,csharp
